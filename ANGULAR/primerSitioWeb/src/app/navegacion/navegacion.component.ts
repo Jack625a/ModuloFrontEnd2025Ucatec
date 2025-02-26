@@ -12,12 +12,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { ContenidoPantallaInferiorComponent } from '../contenido-pantalla-inferior/contenido-pantalla-inferior.component';
 //Importar el contenido de los cards
 import { CardsComponent } from '../cards/cards.component';
+//Importar el contenido del dialogo
+import { DialogoComponent } from '../dialogo/dialogo.component';
 
 
 @Component({
   selector: 'app-navegacion',
   imports: [MatTabsModule,BotonesComponent,
-    MatIconModule, MatBottomSheetModule,MatButtonModule,CardsComponent
+    MatIconModule, MatBottomSheetModule,MatButtonModule,CardsComponent,
+    DialogoComponent
   ],
   templateUrl: './navegacion.component.html',
   styleUrl: './navegacion.component.css'
