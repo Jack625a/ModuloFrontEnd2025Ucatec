@@ -1,0 +1,34 @@
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon>home</mat-icon>
+            Tab1
+        </ng-template>
+        <div class="tab1">
+           <app-botones></app-botones>
+        </div>
+        
+    </mat-tab>
+    <mat-tab >
+        <ng-template mat-tab-label>
+            <mat-icon>check</mat-icon>
+            Tab2
+        </ng-template>
+        <h1>Pantalla Emergente inferior</h1>
+        <button mat-flat-button (click)="mostrarPantalla()" >Mostrar Pantalla</button>
+    </mat-tab>
+    <mat-tab >
+        <ng-template mat-tab-label>
+            <mat-icon>tiktok</mat-icon>
+            Tab3
+        </ng-template>
+        <app-cards></app-cards>
+    </mat-tab>
+    <mat-tab >
+        <ng-template mat-tab-label>
+            <mat-icon>bolt</mat-icon>
+            Tab4
+        </ng-template>
+        Contenido del tab4
+    </mat-tab>
+</mat-tab-group>

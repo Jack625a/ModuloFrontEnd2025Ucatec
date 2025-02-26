@@ -1,0 +1,23 @@
+<div class="contenedor">
+    <mat-card *ngFor="let dato of datos" class="cards">
+        <mat-card-header>
+            <mat-card-title>
+                {{dato.nombre}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{dato.precio}} Bs
+            </mat-card-subtitle>
+            <img mat-card-avatar [src]="dato.imagen" />
+        </mat-card-header>
+        <img mat-card-image [src]="dato.imagen" class="imagen"/>
+        <mat-card-content>
+            <p>{{dato.descripcion}} </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>Mostrar</button>
+            <button mat-button>Prueba</button>
+        </mat-card-actions>
+    </mat-card>
+    
+
+</div>
