@@ -14,13 +14,16 @@ import { ContenidoPantallaInferiorComponent } from '../contenido-pantalla-inferi
 import { CardsComponent } from '../cards/cards.component';
 //Importar el contenido del dialogo
 import { DialogoComponent } from '../dialogo/dialogo.component';
+//Importar el contenido de imputs
+import { InputsComponent } from '../inputs/inputs.component';
 
 
 @Component({
   selector: 'app-navegacion',
   imports: [MatTabsModule,BotonesComponent,
     MatIconModule, MatBottomSheetModule,MatButtonModule,CardsComponent,
-    DialogoComponent
+    DialogoComponent,
+    InputsComponent
   ],
   templateUrl: './navegacion.component.html',
   styleUrl: './navegacion.component.css'
