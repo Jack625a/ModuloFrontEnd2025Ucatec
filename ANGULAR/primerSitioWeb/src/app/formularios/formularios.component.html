@@ -1,0 +1,19 @@
+<h1>Formulario reactivo</h1>
+<form [formGroup]="primerFormulario">
+    <mat-form-field>
+        <mat-label>Nombre:</mat-label>
+        <input type="text" matInput required>
+        <mat-icon matIconPrefix>person</mat-icon>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Edad: </mat-label>
+        <input type="number" matInput required>
+        <mat-icon matIconPrefix>pin</mat-icon>
+    </mat-form-field>
+    <br>
+    <div>
+        <button mat-flat-button(click) ="enviardDatos()">Enviar</button>
+    </div>
+
+</form>

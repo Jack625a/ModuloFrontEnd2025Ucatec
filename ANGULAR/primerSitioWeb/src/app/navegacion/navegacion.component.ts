@@ -16,14 +16,15 @@ import { CardsComponent } from '../cards/cards.component';
 import { DialogoComponent } from '../dialogo/dialogo.component';
 //Importar el contenido de imputs
 import { InputsComponent } from '../inputs/inputs.component';
-
+//Importar el formulario reactivo
+import { FormulariosComponent } from '../formularios/formularios.component';
 
 @Component({
   selector: 'app-navegacion',
   imports: [MatTabsModule,BotonesComponent,
     MatIconModule, MatBottomSheetModule,MatButtonModule,CardsComponent,
     DialogoComponent,
-    InputsComponent
+    InputsComponent,FormulariosComponent
   ],
   templateUrl: './navegacion.component.html',
   styleUrl: './navegacion.component.css'
