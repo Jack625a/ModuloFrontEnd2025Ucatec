@@ -1,4 +1,77 @@
-<h1>Formulario reactivo</h1>
+<h1>Formulario reactivo con pasos</h1>
+<mat-stepper orientation="vertical">
+    <mat-step [stepControl]="primerFormulario" label="Informacion">
+        <div class="primerFormulario">
+        <form [formGroup]="primerFormulario">
+            <mat-form-field>
+                <mat-label>Nombre:</mat-label>
+                <input type="text" matInput required formControlName="nombre">
+                <mat-icon matIconPrefix>person</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Edad: </mat-label>
+                <input type="number" matInput required formControlName="edad" min="2">
+                <mat-icon matIconPrefix>pin</mat-icon>
+            </mat-form-field>
+            <br>
+            <div>
+                <button mat-flat-button matStepperNext [disabled]="!primerFormulario.valid">Siguiente</button>
+            </div>
+        </form>
+        </div>
+     
+
+    </mat-step>
+    <mat-step label="Informacion 2" [stepControl]="segundoFormulario">
+        <form [formGroup]="segundoFormulario">
+            <mat-form-field>
+                <mat-label>Correo: </mat-label>
+                <input type="email" matInput required formControlName="correo">
+                <mat-icon matIconPrefix>email</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Celular: </mat-label>
+                <input type="tel" matInput required formControlName="celular">
+                <mat-icon matIconPrefix>phone</mat-icon>
+            </mat-form-field>
+            <br>
+            <div>
+                <button mat-flat-button matStepperNext [disabled]="!segundoFormulario.valid">Siguiente</button>
+            </div>
+        </form>
+
+    </mat-step>
+    <mat-step label="Informacion 3" [stepControl]="terceroFormulario">
+        <form [formGroup]="terceroFormulario">
+            <mat-form-field>
+                <mat-label>CI:</mat-label>
+                <input type="number" matInput formControlName="ci">
+                <mat-icon matIconPrefix>tag</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Contraseña: </mat-label>
+                <input type="password" matInput formControlName="contraseña">
+                <mat-icon matIconPrefix>password</mat-icon>
+            </mat-form-field>
+            <br>
+            <div>
+               
+                <button mat-flat-button matStepperNext [disabled]="!terceroFormulario.valid" (click)="enviardDatos()">Enviar Datos</button>
+            </div>
+        </form>
+
+    </mat-step>
+
+</mat-stepper>
+
+
+
+
+<br>
+<h1>Fomrulario Reactivo Simple</h1>
 <form [formGroup]="primerFormulario">
     <mat-form-field>
         <mat-label>Nombre:</mat-label>
