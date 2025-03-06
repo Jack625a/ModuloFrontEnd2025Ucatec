@@ -52,4 +52,30 @@ export class BasedatosService {
       );
     }));
   }
+  //Metodo para enviar datos datos a Airtable
+  añadirDatos(datos:any):
+  Observable<any>{
+    return from(
+      new Promise<any>((resolve,reject)=>{
+        this.base("Productos").create([
+          {
+            "fields":{
+              "nombre":datos.nombre,
+              "precio":datos.precio,
+              "descripcion":datos.descripcion,
+              "imagen":datos.imagen
+            }
+          }
+        ],function(error:any, registros:any[]){
+          if(error){
+            reject(error)
+            return;
+          }
+          resolve(registros);
+        }
+      );
+    
+  }));
+  }
+    
 }

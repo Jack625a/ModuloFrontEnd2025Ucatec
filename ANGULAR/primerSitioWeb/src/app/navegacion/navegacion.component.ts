@@ -18,13 +18,17 @@ import { DialogoComponent } from '../dialogo/dialogo.component';
 import { InputsComponent } from '../inputs/inputs.component';
 //Importar el formulario reactivo
 import { FormulariosComponent } from '../formularios/formularios.component';
+//Importar el formulario de crearDatos
+import { CrearDatosComponent } from '../crear-datos/crear-datos.component';
+
 
 @Component({
   selector: 'app-navegacion',
   imports: [MatTabsModule,BotonesComponent,
     MatIconModule, MatBottomSheetModule,MatButtonModule,CardsComponent,
     DialogoComponent,
-    InputsComponent,FormulariosComponent
+    InputsComponent,FormulariosComponent,
+    CrearDatosComponent
   ],
   templateUrl: './navegacion.component.html',
   styleUrl: './navegacion.component.css'

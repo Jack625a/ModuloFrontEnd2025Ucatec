@@ -1,0 +1,55 @@
+<h1>Formulario para añadir datos a la BASE DE DATOS</h1>
+<mat-stepper>
+    <mat-step 
+        [stepControl]="datosFormulario"
+        label="Datos Producto"
+    >
+    <form [formGroup]="datosFormulario">
+        <mat-form-field>
+            <mat-label>Nombre Producto</mat-label>
+            <input type="text" matInput required formControlName="nombre">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Precio Producto</mat-label>
+            <input type="number" matInput required formControlName="precio">
+        </mat-form-field>
+        <div>
+            <button mat-flat-button matStepperNext [disabled]="!datosFormulario.valid">Siguiente</button>
+        </div>
+    </form>
+
+    </mat-step>
+    <mat-step
+        [stepControl]="datosFormulario2"
+        label="Descripcion Producto"
+    >
+    <form [formGroup]="datosFormulario2">
+        <mat-form-field>
+            <mat-label>Descripcion</mat-label>
+            <input type="text" matInput required formControlName="descripcion">
+        </mat-form-field>
+        <div>
+            <button mat-flat-button matStepperNext [disabled]="!datosFormulario2.valid">Siguiente</button>
+        </div>
+    </form>
+
+    </mat-step>
+
+    <mat-step
+    [stepControl]="datosFormulario3"
+    label="Imagen Producto"
+    >
+    <form [formGroup]="datosFormulario3">
+        <mat-form-field>
+            <mat-label>Imagen Producto</mat-label>
+            <input type="text" matInput required formControlName="imagen">
+        </mat-form-field>
+        <div>
+            <button mat-flat-button matStepperNext [disabled]="!datosFormulario3.valid" (click)="enviarFormulario()">Registrar Producto</button>
+        </div>
+    </form>
+
+    </mat-step>
+</mat-stepper>
+
