@@ -1,5 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Image, Button,Alert,TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View,Image, Button,Alert,TextInput, ScrollView, FlatList } from 'react-native';
+
+
+//DATOS PARA EL FLATLIST
+const data=[{
+  nombre:'Producto1',
+  precio:10
+},
+{
+  nombre:'Producto2',
+  precio:20
+},
+{
+  nombre:'Producto3',
+  precio:60
+}
+];
 
 export default function App() {
   return (
@@ -54,8 +70,18 @@ export default function App() {
         placeholder='Ingrese su nombre: '
         keyboardType='numeric'
       />
+      <FlatList
+      data={data}
 
-      <StatusBar style="auto" />
+      renderItem={({
+        item
+      })=>
+        <Text>{item.nombre} - {item.precio}Bs  </Text>
+    
+    }
+      
+      />
+     
     </ScrollView>
   );
 }
