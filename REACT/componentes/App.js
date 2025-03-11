@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Image, Button,Alert,TextInput } from 'react-native';
+import { StyleSheet, Text, View,Image, Button,Alert,TextInput, ScrollView } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <ScrollView>
       <Text 
         style={styles.titulos}
       >Kevin Arroyo</Text>
@@ -14,6 +14,37 @@ export default function App() {
         }}
         style={styles.imagenes}
       />
+      <Image
+        source={{
+          uri:'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
+        }}
+        style={styles.imagenes}
+      />
+      <Image
+        source={{
+          uri:'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
+        }}
+        style={styles.imagenes}
+      />
+      <Image
+        source={{
+          uri:'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
+        }}
+        style={styles.imagenes}
+      />
+      <Image
+        source={{
+          uri:'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
+        }}
+        style={styles.imagenes}
+      />
+      <Image
+        source={{
+          uri:'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
+        }}
+        style={styles.imagenes}
+      />
+
       <Button
         title='Enviar'
         onPress={()=> Alert.alert('Mostrando la alerta del click')}
@@ -25,7 +56,7 @@ export default function App() {
       />
 
       <StatusBar style="auto" />
-    </View>
+    </ScrollView>
   );
 }
 
