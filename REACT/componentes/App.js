@@ -1,5 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Image, Button,Alert,TextInput, ScrollView, FlatList } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View,Image,Alert, ScrollView, FlatList, Dimensions } from 'react-native';
+//Importar react native paper
+import { Button,TextInput } from 'react-native-paper';
+//Importar los iconos
+import {MaterialCommunityIcons} from 'react-native-vector-icons'
 
 
 //DATOS PARA EL FLATLIST
@@ -17,72 +22,67 @@ const data=[{
 }
 ];
 
+//Constante para la responsibidad del sitio web
+const { width,height }=Dimensions.get('window');
+
 export default function App() {
   return (
-    <ScrollView>
-      <Text 
+    <><ScrollView>
+      <Text
         style={styles.titulos}
-      >Kevin Arroyo</Text>
+      >Kevin Arroyo {width}px </Text>
       <Text style={styles.titulos}>Primer Sitio Web en React</Text>
       <Image
         source={{
-          uri:'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
+          uri: 'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
         }}
-        style={styles.imagenes}
-      />
-      <Image
-        source={{
-          uri:'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
-        }}
-        style={styles.imagenes}
-      />
-      <Image
-        source={{
-          uri:'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
-        }}
-        style={styles.imagenes}
-      />
-      <Image
-        source={{
-          uri:'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
-        }}
-        style={styles.imagenes}
-      />
-      <Image
-        source={{
-          uri:'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
-        }}
-        style={styles.imagenes}
-      />
-      <Image
-        source={{
-          uri:'https://talent500.com/blog/wp-content/uploads/sites/42/2024/05/react-must-be-in-scope-when-using-jsx-scaled-1.jpg'
-        }}
-        style={styles.imagenes}
-      />
+        style={styles.imagenes} />
+
 
       <Button
-        title='Enviar'
-        onPress={()=> Alert.alert('Mostrando la alerta del click')}
-      />
-      <TextInput 
-        style={styles.entradaTexto}
-        placeholder='Ingrese su nombre: '
-        keyboardType='numeric'
-      />
-      <FlatList
-      data={data}
+        icon='camera'
+        mode='contained'
+        onPress={() => alert('Mostrando la alerta del click')}>Boton 1</Button>
+      <TextInput
 
-      renderItem={({
-        item
-      })=>
-        <Text>{item.nombre} - {item.precio}Bs  </Text>
+        label={'Nombre'}
+        mode='outlined'
+        placeholder='Ingrese su nombre'
+        keyboardType='text'
+        left={
+          <TextInput.Icon name="home" />
+        }
+        
+        
+        />
+      <FlatList
+        data={data}
+
+        renderItem={({
+          item
+        }) => <Text>{item.nombre} - {item.precio}Bs  </Text>} />
+
+
+
+
+    </ScrollView><></>
     
-    }
-      
-      />
-     
-    </ScrollView>
+    <br></br>
+    <View>
+    <Button
+    mode='contained'>
+      Boton Contorno
+    </Button>
+    <Button
+    mode='outlined'>
+      Boton linea Contorno
+    </Button>
+    <Button
+    mode='contained-tonal'>
+      Boton linea Contorno tono
+    </Button>
+   
+    </View></>
   );
 }
 
