@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View,Image,Alert, ScrollView, FlatList, Dimensions } from 'react-native';
+import { StyleSheet, View,Image,Alert, ScrollView, FlatList, Dimensions } from 'react-native';
 //Importar react native paper
-import { Button,TextInput } from 'react-native-paper';
+import { Button,TextInput, Card, Text } from 'react-native-paper';
 //Importar los iconos
 import {MaterialCommunityIcons} from 'react-native-vector-icons'
 
@@ -20,6 +20,80 @@ const data=[{
   nombre:'Producto3',
   precio:60
 }
+];
+//DATOS LOCALES PARA EL CARD (API AIRTABLE)
+
+const datos=[
+  {
+    id:1,
+    nombre:'Producto1',
+    precio:150,
+    descripcion:'Descriocion producto 1',
+    imagen:'https://www.viaxesports.com/wp-content/uploads/2023/04/GALAXY-A54-black.jpg'
+  },
+  {
+    id:2,
+    nombre:'Producto2',
+    precio:200,
+    descripcion:'Descripcion producto 2',
+    imagen:'https://www.condorinformatica.uy/imgs/productos/productos33_14609.png'
+  },
+  {
+    id:3,
+    nombre:'Producto1',
+    precio:150,
+    descripcion:'Descriocion producto 1',
+    imagen:'https://www.viaxesports.com/wp-content/uploads/2023/04/GALAXY-A54-black.jpg'
+  },
+  {
+    id:4,
+    nombre:'Producto2',
+    precio:200,
+    descripcion:'Descripcion producto 2',
+    imagen:'https://www.condorinformatica.uy/imgs/productos/productos33_14609.png'
+  },
+  {
+    id:4,
+    nombre:'Producto1',
+    precio:150,
+    descripcion:'Descriocion producto 1',
+    imagen:'https://www.viaxesports.com/wp-content/uploads/2023/04/GALAXY-A54-black.jpg'
+  },
+  {
+    id:5,
+    nombre:'Producto2',
+    precio:200,
+    descripcion:'Descripcion producto 2',
+    imagen:'https://www.condorinformatica.uy/imgs/productos/productos33_14609.png'
+  },
+  {
+    id:6,
+    nombre:'Producto1',
+    precio:150,
+    descripcion:'Descriocion producto 1',
+    imagen:'https://www.viaxesports.com/wp-content/uploads/2023/04/GALAXY-A54-black.jpg'
+  },
+  {
+    id:7,
+    nombre:'Producto2',
+    precio:200,
+    descripcion:'Descripcion producto 2',
+    imagen:'https://www.condorinformatica.uy/imgs/productos/productos33_14609.png'
+  },
+  {
+    id:8,
+    nombre:'Producto1',
+    precio:150,
+    descripcion:'Descriocion producto 1',
+    imagen:'https://www.viaxesports.com/wp-content/uploads/2023/04/GALAXY-A54-black.jpg'
+  },
+  {
+    id:9,
+    nombre:'Producto2',
+    precio:200,
+    descripcion:'Descripcion producto 2',
+    imagen:'https://www.condorinformatica.uy/imgs/productos/productos33_14609.png'
+  }
 ];
 
 //Constante para la responsibidad del sitio web
@@ -62,6 +136,27 @@ export default function App() {
           item
         }) => <Text>{item.nombre} - {item.precio}Bs  </Text>} />
 
+    {datos.map((item)=>(
+      <Card style={styles.card} key={item.id}>
+      <Card.Title 
+          title={item.nombre}
+          subtitle={item.precio}
+          //left={LeftContent}
+      />
+      <Card.Content>
+        <Image
+          source={item.imagen}
+          style={styles.imagenesCard}
+        />
+        <Text>{item.nombre} </Text>
+        <Text>{item.descripcion} </Text>
+      </Card.Content>
+      <Card.Actions>
+        <Button>Prueba</Button>
+      </Card.Actions>
+    </Card>
+    ))}
+    
 
 
 
@@ -109,5 +204,16 @@ const styles = StyleSheet.create({
   entradaTexto:{
     padding:15,
     borderWidth:1
-  }
+  },
+  card:{
+    width:300,
+    padding:15,
+    margin:20,
+    elevation:4,
+  },imagenesCard:{
+    width:'100%',
+    height:200,
+    borderRadius:20,
+    
+  },
 });
