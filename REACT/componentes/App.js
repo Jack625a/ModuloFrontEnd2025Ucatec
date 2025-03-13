@@ -1,11 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import { StyleSheet, View,Image,Alert, ScrollView, FlatList, Dimensions } from 'react-native';
 //Importar react native paper
 import { Button,TextInput, Card, Text } from 'react-native-paper';
 //Importar los iconos
 import {MaterialCommunityIcons} from 'react-native-vector-icons'
+//Importar axios (peticios http: Airtable)
+import axios from 'axios';
 
+//Configuracion de la API AIRTABLE
+const Airtable_Token="";
+const Airtable_IdBase="";
+const Airtable_TableName="Productos";
 
 //DATOS PARA EL FLATLIST
 const data=[{
@@ -100,6 +106,40 @@ const datos=[
 const { width,height }=Dimensions.get('window');
 
 export default function App() {
+  const[dataA,setDataA]=useState([]);
+  const[cargar,setCargar]=useState(true);
+
+  useEffect(()=>{
+    mostrarDatosAirtable();
+  },[]);
+
+  const mostrarDatosAirtable= async()=>{
+    try{
+      const respuesta=await axios.get(
+      `https://api.airtable.com/v0/${Airtable_IdBase}/${Airtable_TableName} `
+      ,
+      {
+        headers:{
+          Authorization:`Bearer ${Airtable_Token}`},
+      }
+      
+    );
+
+    const registros=respuesta.data.records.map((registro)=>({
+      id:registro.id,
+      nombre:registro.fields.nombre,
+      precio:registro.fields.precio,
+      imagen:registro.fields.imagen,
+      descripcion:registro.fields.descripcion
+    }));
+     setDataA(registros); 
+    }catch(error){
+      console.error("Error al obtener los datos", error);
+    }finally{
+      setCargar(false);
+    }
+  };
+
   return (
     <><ScrollView>
       <Text
@@ -136,7 +176,7 @@ export default function App() {
           item
         }) => <Text>{item.nombre} - {item.precio}Bs  </Text>} />
 
-    {datos.map((item)=>(
+    {dataA.map((item)=>(
       <Card style={styles.card} key={item.id}>
       <Card.Title 
           title={item.nombre}
