@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useEffect,useState} from 'react';
-import { StyleSheet, View,Image,Alert, ScrollView, FlatList, Dimensions } from 'react-native';
+import React, {use, useEffect,useState} from 'react';
+import { StyleSheet, View,Image,Alert, ScrollView, FlatList, Dimensions, Button } from 'react-native';
 //Importar react native paper
-import { Button,TextInput, Card, Text } from 'react-native-paper';
+import {TextInput, Card, Text } from 'react-native-paper';
 //Importar los iconos
 import {MaterialCommunityIcons} from 'react-native-vector-icons'
 //Importar axios (peticios http: Airtable)
 import axios from 'axios';
+//Importar los formularios
+import { useForm,Controller } from 'react-hook-form'
 
 //Configuracion de la API AIRTABLE
 const Airtable_Token="";
@@ -108,6 +110,24 @@ const { width,height }=Dimensions.get('window');
 export default function App() {
   const[dataA,setDataA]=useState([]);
   const[cargar,setCargar]=useState(true);
+  //Variables para formulario reactivo
+  //DEFINIR LOS ESTADOS INCIALES DE LOS DATOS 
+  const [nombre,setNombre]=useState('');
+  const [precio,setPrecio]=useState('');
+
+
+  // const {control,envioFormulario, reset}=useForm();
+
+  const enviar=()=>{
+    if(!nombre||!precio){
+      Alert.alert('Error','Ingrese todos los datos para enviar');
+      console.log("Error")
+    }else{
+      Alert.alert('Datos enviados', `Nombre: ${nombre} - Precio: ${precio}`);
+      console.log('Datos enviados', `Nombre: ${nombre} - Precio: ${precio}`)
+    }
+    
+  };
 
   useEffect(()=>{
     mostrarDatosAirtable();
@@ -141,7 +161,7 @@ export default function App() {
   };
 
   return (
-    <><ScrollView>
+    <><><ScrollView>
       <Text
         style={styles.titulos}
       >Kevin Arroyo {width}px </Text>
@@ -163,12 +183,7 @@ export default function App() {
         mode='outlined'
         placeholder='Ingrese su nombre'
         keyboardType='text'
-        left={
-          <TextInput.Icon name="home" />
-        }
-        
-        
-        />
+        left={<TextInput.Icon name="home" />} />
       <FlatList
         data={data}
 
@@ -176,48 +191,67 @@ export default function App() {
           item
         }) => <Text>{item.nombre} - {item.precio}Bs  </Text>} />
 
-    {dataA.map((item)=>(
-      <Card style={styles.card} key={item.id}>
-      <Card.Title 
-          title={item.nombre}
-          subtitle={item.precio}
-          //left={LeftContent}
-      />
-      <Card.Content>
-        <Image
-          source={item.imagen}
-          style={styles.imagenesCard}
-        />
-        <Text>{item.nombre} </Text>
-        <Text>{item.descripcion} </Text>
-      </Card.Content>
-      <Card.Actions>
-        <Button>Prueba</Button>
-      </Card.Actions>
-    </Card>
-    ))}
-    
+      {dataA.map((item) => (
+        <Card style={styles.card} key={item.id}>
+          <Card.Title
+            title={item.nombre}
+            subtitle={item.precio} />
+          <Card.Content>
+            <Image
+              source={item.imagen}
+              style={styles.imagenesCard} />
+            <Text>{item.nombre} </Text>
+            <Text>{item.descripcion} </Text>
+          </Card.Content>
+          <Card.Actions>
+            <Button>Prueba</Button>
+          </Card.Actions>
+        </Card>
+      ))}
+
 
 
 
     </ScrollView><></>
-    
-    <br></br>
-    <View>
-    <Button
-    mode='contained'>
-      Boton Contorno
-    </Button>
-    <Button
-    mode='outlined'>
-      Boton linea Contorno
-    </Button>
-    <Button
-    mode='contained-tonal'>
-      Boton linea Contorno tono
-    </Button>
-   
-    </View></>
+
+      <br></br>
+      <View>
+        <Button
+          mode='contained'>
+          Boton Contorno
+        </Button>
+        <Button
+          mode='outlined'>
+          Boton linea Contorno
+        </Button>
+        <Button
+          mode='contained-tonal'>
+          Boton linea Contorno tono
+        </Button>
+
+      </View></>
+      
+      <View>
+      <Text>Nombre:</Text>
+      <TextInput
+           placeholder='Ingrese el nombre del producto'
+           onChangeText={setNombre}
+           value={nombre}
+      />
+      <Text>Precio: </Text>
+      <TextInput
+            placeholder='Ingrese el precio del producto'
+            keyboardType='number'
+            onChangeText={setPrecio}
+            value={precio}
+            
+      />
+      <Button
+        title='Registrar Producto'
+        onPress={enviar}
+        
+      />
+      </View></>
   );
 }
 
